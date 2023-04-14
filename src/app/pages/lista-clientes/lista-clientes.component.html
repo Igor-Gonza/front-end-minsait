@@ -1,0 +1,29 @@
+<h1 class="display-6">clientes</h1>
+<hr>
+<button type="button" class="btn btn-dark me-1" routerLink="/clientes/cadastrar">Cadastrar Cliente</button>
+<table class="table table-striped table-bordered mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Telefone</th>
+      <th scope="col">Endereço</th>
+      <th scope="col">Rendimento Mensal</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes">
+      <th scope="row">{{cliente.nome}}</th>
+      <td>{{cliente.telefone}}</td>
+      <td>{{cliente.ruaEndereco}}, {{cliente.numeroEndereco}} - {{cliente.cep}}</td>
+      <td>{{cliente.rendimentoMensal | currency:'BRL' }}</td>
+      <td>
+        <a type="button" class="btn btn-dark me-1" href="clientes/{{cliente.cpf}}">Editar</a>
+        <button type="button" class="btn btn-danger" (click)="deletarCliente(cliente.cpf)">Deletar</button>
+      </td>
+    </tr>
+    <tr *ngIf="(listaVazia)">
+      <th [colSpan]="5" scope="row">Nenhum cliente cadastrado ainda.</th>
+    </tr>
+  </tbody>
+</table>

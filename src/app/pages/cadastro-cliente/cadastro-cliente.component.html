@@ -1,0 +1,49 @@
+<h1 class="display-6">Cadastrar Cliente</h1>
+<hr>
+<form [formGroup]="clienteForm" (ngSubmit)="cadastrar()">
+  <div class="container">
+    <div class="row">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" formControlName="nome" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3 col-4">
+        <label for="cpf" class="form-label">CPF (sem pontuação)</label>
+        <input type="text" class="form-control" id="cpf" formControlName="cpf" placeholder="00000000000" maxlength="11" required>
+      </div>
+      <div class="mb-3 col-4">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="text" class="form-control" id="telefone" formControlName="telefone" placeholder="0000000000" maxlength="11" required>
+      </div>
+      <div class="mb-3 col-4">
+        <label for="cep" class="form-label">CEP</label>
+        <input type="text" class="form-control" id="cep" formControlName="cep" placeholder="00000000" maxlength="8" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3 col-9">
+        <label for="ruaEndereco" class="form-label">Endereço</label>
+        <input type="text" class="form-control" id="ruaEndereco" placeholder="Rua, avenida..."
+          formControlName="ruaEndereco" required>
+      </div>
+      <div class="mb-3 col-3">
+        <label for="numeroEndereco" class="form-label">Número</label>
+        <input type="text" class="form-control" id="numeroEndereco" formControlName="numeroEndereco" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3 col-4">
+        <label for="rendimentoMensal" class="form-label">Rendimento Mensal (R$)</label>
+        <input type="text" class="form-control" id="rendimentoMensal" placeholder="0.00"
+          formControlName="rendimentoMensal" required>
+      </div>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!this.clienteForm.valid" class="btn btn-primary">Cadastrar</button>
+</form>
+<hr>
+<div>
+  <p><strong>Obs: </strong> Não foi possível adicionar máscaras no formulário. Será necessário preencher os campos de CPF, telefone, CEP e rendimento mensal sem nenhum tipo de pontuação.</p>
+</div>
